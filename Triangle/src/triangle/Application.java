@@ -6,19 +6,36 @@
 
 package triangle;
 
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 /**
  *
  * @author BM
  */
 public class Application extends javax.swing.JFrame {
 
+    ArrayList<Locale> locales = new ArrayList<>();
+    
     /**
      * Creates new form Application
      */
     public Application() {
         initComponents();
+        initLocales();
     }
+    
+    
 
+    private void initLocales(){
+        String[][] localeCodes = new String[][]{{"ar","YE"},
+                                                {"en","GB"},
+                                                {"hu","HU"}}; 
+        for (String[] localeCode : localeCodes) {
+            locales.add(new Locale(localeCode[0], localeCode[1]));
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,27 +50,39 @@ public class Application extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("triangle/Bundle"); // NOI18N
-        jButton1.setText(bundle.getString("Application.jButton1.text")); // NOI18N
+        jButton1.setText(bundle.getString("Application.nextButton.text")); // NOI18N
+        jButton1.setName("nextButton"); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(248, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(236, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Locale l = new Locale("ar","YE");
+        ResourceBundle rb = ResourceBundle.getBundle("triangle/Bundle", l);
+        jButton1.setText(rb.getString("Application.jButton1.text"));
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
