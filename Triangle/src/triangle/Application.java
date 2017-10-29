@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package triangle;
 
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.SwingConstants;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 
 /**
  *
@@ -17,7 +19,7 @@ import java.util.ResourceBundle;
 public class Application extends javax.swing.JFrame {
 
     ArrayList<Locale> locales = new ArrayList<>();
-    
+
     /**
      * Creates new form Application
      */
@@ -26,16 +28,17 @@ public class Application extends javax.swing.JFrame {
         initLocales();
     }
 
-    private void initLocales(){
+    private void initLocales() {
         String[][] localeCodes = new String[][]{
-            {"hu","HU"},
-            {"en","GB"},
-            {"ar","YE"}};
-        
+            {"hu", "HU"},
+            {"en", "GB"},
+            {"ar", "YE"}};
+
         for (String[] localeCode : localeCodes) {
             locales.add(new Locale(localeCode[0], localeCode[1]));
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +51,8 @@ public class Application extends javax.swing.JFrame {
         nextButton = new javax.swing.JButton();
         localeCodeSelector = new javax.swing.JComboBox();
         previousButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        explainTextArea = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,12 +81,18 @@ public class Application extends javax.swing.JFrame {
 
         previousButton.setText(bundle.getString("Application.previousButton.text")); // NOI18N
 
+        explainTextArea.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        explainTextArea.setText(bundle.getString("Application.explainTextArea.text")); // NOI18N
+        jScrollPane2.setViewportView(explainTextArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(476, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                     .addComponent(localeCodeSelector, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -92,8 +103,10 @@ public class Application extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(localeCodeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(localeCodeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
                 .addComponent(nextButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(previousButton)
@@ -105,8 +118,7 @@ public class Application extends javax.swing.JFrame {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
 
-        
-        
+
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void localeCodeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localeCodeSelectorActionPerformed
@@ -114,12 +126,25 @@ public class Application extends javax.swing.JFrame {
     }//GEN-LAST:event_localeCodeSelectorActionPerformed
 
     private void localeCodeSelectorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_localeCodeSelectorItemStateChanged
-        Locale l = locales.get(localeCodeSelector.getSelectedIndex());
+        int lIndex = localeCodeSelector.getSelectedIndex();
+        Locale l = locales.get(lIndex);
         ResourceBundle rb = ResourceBundle.getBundle("triangle/Bundle", l);
         nextButton.setText(rb.getString("Application.nextButton.text"));
         previousButton.setText(rb.getString("Application.previousButton.text"));
         localeCodeSelector.setToolTipText(rb.getString("Application.localeCodeSelector.toolTipText"));
-        
+        explainTextArea.setText(rb.getString("Application.explainTextArea.text"));
+
+        SimpleAttributeSet attribs = new SimpleAttributeSet();
+        switch (lIndex) {
+            case 0:
+            case 1:
+                StyleConstants.setAlignment(attribs, StyleConstants.ALIGN_LEFT);
+                explainTextArea.setParagraphAttributes(attribs, true);
+                break;
+            default:
+                StyleConstants.setAlignment(attribs, StyleConstants.ALIGN_RIGHT);
+                explainTextArea.setParagraphAttributes(attribs, true);
+        }
     }//GEN-LAST:event_localeCodeSelectorItemStateChanged
 
     /**
@@ -158,6 +183,8 @@ public class Application extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane explainTextArea;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox localeCodeSelector;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton previousButton;
