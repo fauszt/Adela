@@ -29,9 +29,11 @@ public class Application extends javax.swing.JFrame {
     
 
     private void initLocales(){
-        String[][] localeCodes = new String[][]{{"ar","YE"},
-                                                {"en","GB"},
-                                                {"hu","HU"}}; 
+        String[][] localeCodes = new String[][]{
+            {"hu","HU"},
+            {"en","GB"},
+            {"ar","YE"}};
+        
         for (String[] localeCode : localeCodes) {
             locales.add(new Locale(localeCode[0], localeCode[1]));
         }
@@ -45,16 +47,31 @@ public class Application extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
+        localeCodeSelector = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("triangle/Bundle"); // NOI18N
-        jButton1.setText(bundle.getString("Application.nextButton.text")); // NOI18N
-        jButton1.setName("nextButton"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        nextButton.setText(bundle.getString("Application.nextButton.text")); // NOI18N
+        nextButton.setName("nextButton"); // NOI18N
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                nextButtonActionPerformed(evt);
+            }
+        });
+
+        localeCodeSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Magyar", "English", "عربى" }));
+        localeCodeSelector.setToolTipText(bundle.getString("Application.localeCodeSelector.toolTipText")); // NOI18N
+        localeCodeSelector.setName("localeCodeSelector"); // NOI18N
+        localeCodeSelector.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                localeCodeSelectorItemStateChanged(evt);
+            }
+        });
+        localeCodeSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                localeCodeSelectorActionPerformed(evt);
             }
         });
 
@@ -64,25 +81,39 @@ public class Application extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(248, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                    .addComponent(localeCodeSelector, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(236, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addContainerGap()
+                .addComponent(localeCodeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                .addComponent(nextButton)
                 .addGap(41, 41, 41))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Locale l = new Locale("ar","YE");
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+
+        
+        
+    }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void localeCodeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localeCodeSelectorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_localeCodeSelectorActionPerformed
+
+    private void localeCodeSelectorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_localeCodeSelectorItemStateChanged
+        Locale l = locales.get(localeCodeSelector.getSelectedIndex());
         ResourceBundle rb = ResourceBundle.getBundle("triangle/Bundle", l);
-        jButton1.setText(rb.getString("Application.jButton1.text"));
-    }//GEN-LAST:event_jButton1ActionPerformed
+        nextButton.setText(rb.getString("Application.nextButton.text"));
+    }//GEN-LAST:event_localeCodeSelectorItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -120,6 +151,7 @@ public class Application extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox localeCodeSelector;
+    private javax.swing.JButton nextButton;
     // End of variables declaration//GEN-END:variables
 }
