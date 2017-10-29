@@ -5,9 +5,11 @@
  */
 package triangle;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -16,9 +18,29 @@ import javax.swing.text.StyleConstants;
  *
  * @author BM
  */
+enum language {
+
+    HU,
+    GB,
+    YE
+}
+
 public class Application extends javax.swing.JFrame {
 
     ArrayList<Locale> locales = new ArrayList<>();
+    String[] images = new String[]{
+        "/triangle/pictures/0.jpg",
+        "/triangle/pictures/1.jpg",
+        "/triangle/pictures/2.jpg",
+        "/triangle/pictures/3.jpg",
+        "/triangle/pictures/4.jpg",
+        "/triangle/pictures/5.jpg",
+        "/triangle/pictures/6.jpg",
+        "/triangle/pictures/7.jpg",};
+
+    final int pictureCountMin = 0;
+    final int pictureCountMax = 7;
+    private byte imageInd = 0;
 
     /**
      * Creates new form Application
@@ -26,6 +48,7 @@ public class Application extends javax.swing.JFrame {
     public Application() {
         initComponents();
         initLocales();
+        setButtons();
     }
 
     private void initLocales() {
@@ -81,6 +104,11 @@ public class Application extends javax.swing.JFrame {
         });
 
         previousButton.setText(bundle.getString("Application.previousButton.text")); // NOI18N
+        previousButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousButtonActionPerformed(evt);
+            }
+        });
 
         explainTextArea.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         explainTextArea.setText(bundle.getString("Application.explainTextArea.text")); // NOI18N
@@ -115,12 +143,12 @@ public class Application extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(localeCodeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(nextButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(previousButton))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -132,8 +160,9 @@ public class Application extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-     
-
+        imageInd++;
+        imageViewer.setIcon(new javax.swing.ImageIcon(getClass().getResource(images[imageInd])));
+        setButtons();
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void localeCodeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localeCodeSelectorActionPerformed
@@ -141,7 +170,7 @@ public class Application extends javax.swing.JFrame {
     }//GEN-LAST:event_localeCodeSelectorActionPerformed
 
     private void localeCodeSelectorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_localeCodeSelectorItemStateChanged
-        int lIndex = localeCodeSelector.getSelectedIndex();
+        final int lIndex = localeCodeSelector.getSelectedIndex();
         Locale l = locales.get(lIndex);
         ResourceBundle rb = ResourceBundle.getBundle("triangle/Bundle", l);
         nextButton.setText(rb.getString("Application.nextButton.text"));
@@ -150,6 +179,7 @@ public class Application extends javax.swing.JFrame {
         explainTextArea.setText(rb.getString("Application.explainTextArea.text"));
 
         SimpleAttributeSet attribs = new SimpleAttributeSet();
+
         switch (lIndex) {
             case 0:
             case 1:
@@ -161,6 +191,17 @@ public class Application extends javax.swing.JFrame {
                 explainTextArea.setParagraphAttributes(attribs, true);
         }
     }//GEN-LAST:event_localeCodeSelectorItemStateChanged
+
+    private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
+        imageInd--;
+        imageViewer.setIcon(new javax.swing.ImageIcon(getClass().getResource(images[imageInd])));
+        setButtons();
+    }//GEN-LAST:event_previousButtonActionPerformed
+
+    private void setButtons() {
+        previousButton.setEnabled(imageInd > pictureCountMin);
+        nextButton.setEnabled(imageInd < pictureCountMax);
+    }
 
     /**
      * @param args the command line arguments
