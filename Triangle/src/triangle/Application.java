@@ -25,8 +25,6 @@ public class Application extends javax.swing.JFrame {
         initComponents();
         initLocales();
     }
-    
-    
 
     private void initLocales(){
         String[][] localeCodes = new String[][]{
@@ -49,6 +47,7 @@ public class Application extends javax.swing.JFrame {
 
         nextButton = new javax.swing.JButton();
         localeCodeSelector = new javax.swing.JComboBox();
+        previousButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,15 +74,18 @@ public class Application extends javax.swing.JFrame {
             }
         });
 
+        previousButton.setText(bundle.getString("Application.previousButton.text")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(248, Short.MAX_VALUE)
+                .addContainerGap(476, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                    .addComponent(localeCodeSelector, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(localeCodeSelector, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(previousButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
@@ -91,9 +93,11 @@ public class Application extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(localeCodeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
                 .addComponent(nextButton)
-                .addGap(41, 41, 41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(previousButton)
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -113,6 +117,9 @@ public class Application extends javax.swing.JFrame {
         Locale l = locales.get(localeCodeSelector.getSelectedIndex());
         ResourceBundle rb = ResourceBundle.getBundle("triangle/Bundle", l);
         nextButton.setText(rb.getString("Application.nextButton.text"));
+        previousButton.setText(rb.getString("Application.previousButton.text"));
+        localeCodeSelector.setToolTipText(rb.getString("Application.localeCodeSelector.toolTipText"));
+        
     }//GEN-LAST:event_localeCodeSelectorItemStateChanged
 
     /**
@@ -153,5 +160,6 @@ public class Application extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox localeCodeSelector;
     private javax.swing.JButton nextButton;
+    private javax.swing.JButton previousButton;
     // End of variables declaration//GEN-END:variables
 }
