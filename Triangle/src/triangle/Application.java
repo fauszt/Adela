@@ -7,6 +7,9 @@ package triangle;
 
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -21,7 +24,7 @@ import javax.swing.text.StyleConstants;
  * @author BM
  */
 
-public class Application extends javax.swing.JFrame {
+public class Application extends javax.swing.JFrame implements WindowListener{
 
     ArrayList<Locale> locales = new ArrayList<>();
 
@@ -52,9 +55,9 @@ public class Application extends javax.swing.JFrame {
         },
     };
         
-    final int pictureCountMin = 0;
-    final int pictureCountMax = 5;
-    private byte imageInd = 0;
+    private int pictureCountMin = 0;
+    private int pictureCountMax = 5;
+    private int imageInd = 0;    
     private int langCode = 0;
 
     /**
@@ -64,7 +67,8 @@ public class Application extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(255, 204, 0));  
         initLocales();
-        setComponents();        
+        setComponents();       
+        addWindowListener(this);
     }
 
     private void initLocales() {
@@ -281,4 +285,45 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JButton nextButton;
     private javax.swing.JButton previousButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void windowOpened(WindowEvent we) {
+        
+        TriangleTopicDialog triangleTopic = new TriangleTopicDialog(this, true);
+        triangleTopic.setVisible(true);
+        pictureCountMin = triangleTopic.getTopicIndexFirst();
+        imageInd = pictureCountMin;
+        pictureCountMax = triangleTopic.getTopicIndexLast();
+        setComponents();        
+    }
+
+    @Override
+    public void windowClosing(WindowEvent we) {
+        
+    }
+
+    @Override
+    public void windowClosed(WindowEvent we) {
+        
+    }
+
+    @Override
+    public void windowIconified(WindowEvent we) {
+        
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent we) {
+        
+    }
+
+    @Override
+    public void windowActivated(WindowEvent we) {
+        
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent we) {
+        
+    }
 }
