@@ -6,6 +6,8 @@
 
 package triangle;
 
+import java.util.ResourceBundle;
+
 /**
  *
  * @author BM
@@ -14,13 +16,7 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form TriangleTopicDialog
-     */
-                
-    public int getLastPictureNo() {
-        return lastPictureNo;
-    }
-    
-    private int lastPictureNo;
+     */                    
     
     public TriangleTopicDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -33,6 +29,14 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
         return topic;
     }
 
+    public void setLanguage(ResourceBundle rb){
+        editingOfTriangle.setText(rb.getString("TriangleTopicDialog.editingOfTriangle.text"));
+        groupOfTriangle.setText(rb.getString("TriangleTopicDialog.propOfTriangle.text"));
+        jLabel1.setText(rb.getString("TriangleTopicDialog.jLabel1.text"));
+        nameOfTriangle.setText(rb.getString("TriangleTopicDialog.nameOfTriangle.text"));
+        propOfTriangle.setText(rb.getString("TriangleTopicDialog.propOfTriangle.text"));
+        this.setTitle(rb.getString("TriangleTopicDialog.title"));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,8 +53,11 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("triangle/Bundle"); // NOI18N
+        setTitle(bundle.getString("TriangleTopicDialog.title")); // NOI18N
+        setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
+        setResizable(false);
+
         editingOfTriangle.setText(bundle.getString("TriangleTopicDialog.editingOfTriangle.text")); // NOI18N
         editingOfTriangle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,25 +126,21 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editingOfTriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editingOfTriangleActionPerformed
-        lastPictureNo = 19;
         topic = 2;        
         setVisible(false);
     }//GEN-LAST:event_editingOfTriangleActionPerformed
 
     private void propOfTriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propOfTriangleActionPerformed
-        lastPictureNo = 5;
         topic = 0;        
         setVisible(false);
     }//GEN-LAST:event_propOfTriangleActionPerformed
 
     private void groupOfTriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupOfTriangleActionPerformed
-        lastPictureNo = 4;
         topic = 1;        
         setVisible(false);
     }//GEN-LAST:event_groupOfTriangleActionPerformed
 
     private void nameOfTriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameOfTriangleActionPerformed
-        lastPictureNo = 16;
         topic = 3;        
         setVisible(false);
     }//GEN-LAST:event_nameOfTriangleActionPerformed

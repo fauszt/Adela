@@ -148,13 +148,14 @@ public class Application extends javax.swing.JFrame implements WindowListener {
         explainTextArea = new javax.swing.JTextPane();
         imageViewer = new javax.swing.JLabel();
         topic = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        selectTopic = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("triangle/Bundle"); // NOI18N
         setTitle(bundle.getString("Application.title")); // NOI18N
         setBackground(new java.awt.Color(255, 204, 0));
         setName("mainFrame"); // NOI18N
+        setResizable(false);
 
         nextButton.setText(bundle.getString("Application.nextButton.text")); // NOI18N
         nextButton.setName("nextButton"); // NOI18N
@@ -203,10 +204,12 @@ public class Application extends javax.swing.JFrame implements WindowListener {
         topic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         topic.setText(bundle.getString("Application.topic.text")); // NOI18N
 
-        jButton1.setText(bundle.getString("Application.jButton1.text")); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        selectTopic.setText(bundle.getString("Application.selectTopic.text")); // NOI18N
+        selectTopic.setToolTipText(bundle.getString("Application.selectTopic.toolTipText")); // NOI18N
+        selectTopic.setActionCommand(bundle.getString("Application.selectTopic.actionCommand")); // NOI18N
+        selectTopic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                selectTopicActionPerformed(evt);
             }
         });
 
@@ -227,7 +230,7 @@ public class Application extends javax.swing.JFrame implements WindowListener {
                             .addComponent(localeCodeSelector, 0, 127, Short.MAX_VALUE)
                             .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                             .addComponent(previousButton, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(selectTopic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -236,7 +239,7 @@ public class Application extends javax.swing.JFrame implements WindowListener {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(topic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                    .addComponent(selectTopic, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -272,7 +275,9 @@ public class Application extends javax.swing.JFrame implements WindowListener {
         nextButton.setText(rb.getString("Application.nextButton.text"));
         previousButton.setText(rb.getString("Application.previousButton.text"));
         localeCodeSelector.setToolTipText(rb.getString("Application.localeCodeSelector.toolTipText"));
+        selectTopic.setText(rb.getString("Application.selectTopic.text"));
         this.setTitle(rb.getString("Application.title"));
+        triangleTopic.setLanguage(rb);
 
         switch (lIndex) {
             case 0:
@@ -292,9 +297,9 @@ public class Application extends javax.swing.JFrame implements WindowListener {
         setComponents();
     }//GEN-LAST:event_previousButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void selectTopicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTopicActionPerformed
         setTopic();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_selectTopicActionPerformed
 
     private void setButtons() {
         previousButton.setEnabled(imageInd > 0);        
@@ -346,11 +351,11 @@ public class Application extends javax.swing.JFrame implements WindowListener {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane explainTextArea;
     private javax.swing.JLabel imageViewer;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox localeCodeSelector;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton previousButton;
+    private javax.swing.JButton selectTopic;
     private javax.swing.JLabel topic;
     // End of variables declaration//GEN-END:variables
 
