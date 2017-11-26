@@ -15,21 +15,22 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
     /**
      * Creates new form TriangleTopicDialog
      */
+                
+    public int getLastPictureNo() {
+        return lastPictureNo;
+    }
     
-    private int topicIndexFirst;
-
-    public int getTopicIndexFirst() {
-        return topicIndexFirst;
-    }
-
-    public int getTopicIndexLast() {
-        return topicIndexLast;
-    }
-    private int topicIndexLast;
+    private int lastPictureNo;
     
     public TriangleTopicDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    private int topic = 0;
+
+    public int getTopicIndex() {
+        return topic;
     }
 
     /**
@@ -103,12 +104,12 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(propOfTriangle, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editingOfTriangle, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(groupOfTriangle, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editingOfTriangle, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nameOfTriangle, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -118,26 +119,26 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editingOfTriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editingOfTriangleActionPerformed
-        topicIndexFirst = 0;
-        topicIndexLast = 1;
+        lastPictureNo = 19;
+        topic = 2;        
         setVisible(false);
     }//GEN-LAST:event_editingOfTriangleActionPerformed
 
     private void propOfTriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propOfTriangleActionPerformed
-        topicIndexFirst = 2;
-        topicIndexLast = 3;
+        lastPictureNo = 5;
+        topic = 0;        
         setVisible(false);
     }//GEN-LAST:event_propOfTriangleActionPerformed
 
     private void groupOfTriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupOfTriangleActionPerformed
-        topicIndexFirst = 4;
-        topicIndexLast = 5;
+        lastPictureNo = 4;
+        topic = 1;        
         setVisible(false);
     }//GEN-LAST:event_groupOfTriangleActionPerformed
 
     private void nameOfTriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameOfTriangleActionPerformed
-        topicIndexFirst = 6;
-        topicIndexLast = 7;
+        lastPictureNo = 16;
+        topic = 3;        
         setVisible(false);
     }//GEN-LAST:event_nameOfTriangleActionPerformed
 

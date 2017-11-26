@@ -5,69 +5,61 @@
  */
 package triangle;
 
-import java.awt.Color;
 import java.awt.ComponentOrientation;
-import java.awt.event.WindowAdapter;
+import java.awt.Image;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
 
 /**
  *
  * @author BM
  */
+public class Application extends javax.swing.JFrame implements WindowListener {
 
-public class Application extends javax.swing.JFrame implements WindowListener{
+    private TriangleTopicDialog triangleTopic = null;
 
-    ArrayList<Locale> locales = new ArrayList<>();
+    final private ArrayList<Locale> locales = new ArrayList<>();
 
-    String[][] texts = new String[][]
-    {
-        {"Háromszög egyenlőtlenség", 
-         "a+b>c\tb+c>a\ta+c>b\n\nA szerkesztett háromszög", 
-         "α+ β+ γ=180°\n\nBármely háromszög belső szöginek összege 180°", 
-         "α+ β+ γ=360°\n\nBármely háromszög külső szöginek összege 360°", 
-         "α+α’=180°\tβ+β’=180°\tγ+γ’=180°\n\nA háromszög azonos csúcsánál lévő belső és külső szögének összege 180°", 
-         "Egyenlő oldalú háromszög", 
-         ""},
-        {"Triangular inequality", 
-         "a+b>c\tb+c>a\ta+c>b\n\nThe edited triangle", 
-         "α+ β+ γ=180°\n\nThe angle of any triangle is 180°", 
-         "α+ β+ γ=360°\n\nThe sum of the outer angles of any triangle is 360°", 
-         "α+α’=180°\tβ+β’=180°\tγ+γ’=180°\n\nThe sum of the inner and outer angles at the same vertex of the triangle is 180°", 
-         "Equilateral triangle",
-         "",
+    final private String[][] topicTexts = new String[][]{
+        {"Háromszögek tulajdonságai",
+            "Háromszögek csoportosítása",
+            "Háromszögek szerkeszthetőségének alapesetei",                        
+            "Háromszögek nevei"
         },
-        {"الثلاثي غير المتساوي", 
-         "a+b>c\tb+c>a\ta+c>b\n\nالمثلث المعدل", 
-         "α+ β+ γ=180°\n\nزاوية أي مثلث هو 180 درجة", 
-         "α+ β+ γ=360°\n\nمجموع الزوايا الخارجية لأي مثلث هو 360 درجة", 
-         "α+α’=180°\tβ+β’=180°\tγ+γ’=180°\n\nمجموع الزوايا الداخلية والخارجية في نفس قمة الرأس من المثلث هو 180 درجة", 
-         "مثلث متساوي الاضلاع", 
-         "",
+        {"Properties of triangles",
+            "Grouping of triangles",
+            "Basics of editing triangles",                        
+            "Names of triangles"
         },
+        {"خصائص المثلثات",
+            "تجميع المثلثات",
+            "أساسيات المثلثات التحرير",            
+            "أسماء المثلثات"
+        }
     };
+
+    String[][][] topicText = new String [3][4][20];
         
-    private int pictureCountMin = 0;
-    private int pictureCountMax = 5;
-    private int imageInd = 0;    
-    private int langCode = 0;
+    private int imageInd;
+    private int langCode;
+    private int topicInd;
+    final private int noOfTopic = 4;
 
     /**
      * Creates new form Application
      */
     public Application() {
         initComponents();
-        getContentPane().setBackground(new java.awt.Color(255, 204, 0));  
+        getContentPane().setBackground(new java.awt.Color(255, 204, 0));
         initLocales();
-        setComponents();       
+        initTopicText();
+        setComponents();
         addWindowListener(this);
     }
 
@@ -81,16 +73,60 @@ public class Application extends javax.swing.JFrame implements WindowListener{
             locales.add(new Locale(localeCode[0], localeCode[1]));
         }
     }
-    
-    private void setExplainText(){
-        explainTextArea.setText(texts[langCode][imageInd]);
+
+    private void initTopicText() {
+
+        
+        for (int top = 0; top < noOfTopic; ++top) {            
+
+            File dir = new File(getClass().getResource("/triangle/texts/" + top).getPath());
+
+            File[] files = dir.listFiles();
+            for (File file : files) {
+                try {                    
+                    String absolutePath = file.getAbsolutePath();
+                    String lang = absolutePath.substring(absolutePath.length() - 6, absolutePath.length() - 4);
+                    Scanner scan = new Scanner(new File(absolutePath), "UTF-8");
+                    
+                    int textNo = Integer.parseInt(file.getName().split("_")[0]);
+
+                    String line = "";
+                    while (scan.hasNextLine()) {
+                        line += scan.nextLine();
+                        line += "\n";
+                    }
+                    switch (lang) {
+                        case "hu":
+                            topicText[0][top][textNo] = line;
+                            break;
+                        case "en":
+                            topicText[1][top][textNo] = line;
+                            break;
+                        case "ar":
+                            topicText[2][top][textNo] = line;
+                            break;
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+        }
     }
-    
-    private void setImage(){
-        imageViewer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/triangle/pictures/" +imageInd+".jpg")));
+
+    private void setExplainText() {
+        explainTextArea.setText(topicText[langCode][topicInd][imageInd]);
+        if (triangleTopic != null) {
+            topic.setText(topicTexts[langCode][topicInd]);
+        }
     }
-    
-    private void setComponents(){
+
+    private void setImage() {
+        if (triangleTopic != null) {            
+            imageViewer.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/triangle/pictures/" + topicInd + "/" + imageInd + ".jpg")).getImage().getScaledInstance(770, 414, Image.SCALE_DEFAULT)));            
+        }
+    }
+
+    private void setComponents() {
         setImage();
         setExplainText();
         setButtons();
@@ -111,6 +147,8 @@ public class Application extends javax.swing.JFrame implements WindowListener{
         jScrollPane2 = new javax.swing.JScrollPane();
         explainTextArea = new javax.swing.JTextPane();
         imageViewer = new javax.swing.JLabel();
+        topic = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("triangle/Bundle"); // NOI18N
@@ -156,11 +194,21 @@ public class Application extends javax.swing.JFrame implements WindowListener{
 
         imageViewer.setBackground(new java.awt.Color(255, 255, 255));
         imageViewer.setForeground(new java.awt.Color(255, 255, 255));
-        imageViewer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/triangle/pictures/1.jpg"))); // NOI18N
         imageViewer.setText(bundle.getString("Application.imageViewer.text")); // NOI18N
         imageViewer.setToolTipText(bundle.getString("Application.imageViewer.toolTipText")); // NOI18N
         imageViewer.setFocusable(false);
         imageViewer.setOpaque(true);
+
+        topic.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        topic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        topic.setText(bundle.getString("Application.topic.text")); // NOI18N
+
+        jButton1.setText(bundle.getString("Application.jButton1.text")); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,30 +217,37 @@ public class Application extends javax.swing.JFrame implements WindowListener{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imageViewer, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
+                    .addComponent(imageViewer, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(topic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(localeCodeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(previousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(localeCodeSelector, 0, 127, Short.MAX_VALUE)
+                            .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                            .addComponent(previousButton, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(topic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(localeCodeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(nextButton)
+                        .addComponent(localeCodeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(previousButton))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imageViewer, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                        .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(previousButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(imageViewer, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -216,19 +271,19 @@ public class Application extends javax.swing.JFrame implements WindowListener{
         ResourceBundle rb = ResourceBundle.getBundle("triangle/Bundle", l);
         nextButton.setText(rb.getString("Application.nextButton.text"));
         previousButton.setText(rb.getString("Application.previousButton.text"));
-        localeCodeSelector.setToolTipText(rb.getString("Application.localeCodeSelector.toolTipText"));    
-        this.setTitle(rb.getString("Application.title"));        
-        
+        localeCodeSelector.setToolTipText(rb.getString("Application.localeCodeSelector.toolTipText"));
+        this.setTitle(rb.getString("Application.title"));
+
         switch (lIndex) {
             case 0:
-            case 1:                                
+            case 1:
                 explainTextArea.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
                 break;
-            case 2:                
-                explainTextArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);                
+            case 2:
+                explainTextArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
                 break;
-            default:                
-                explainTextArea.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);                
+            default:
+                explainTextArea.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         }
     }//GEN-LAST:event_localeCodeSelectorItemStateChanged
 
@@ -237,9 +292,20 @@ public class Application extends javax.swing.JFrame implements WindowListener{
         setComponents();
     }//GEN-LAST:event_previousButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        setTopic();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void setButtons() {
-        previousButton.setEnabled(imageInd > pictureCountMin);
-        nextButton.setEnabled(imageInd < pictureCountMax);
+        previousButton.setEnabled(imageInd > 0);        
+        nextButton.setEnabled(topicText[langCode][topicInd][imageInd +1 ] != null);
+    }
+
+    private void setTopic() {
+        triangleTopic.setVisible(true);        
+        imageInd = 0;        
+        topicInd = triangleTopic.getTopicIndex();        
+        setComponents();
     }
 
     /**
@@ -280,50 +346,47 @@ public class Application extends javax.swing.JFrame implements WindowListener{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane explainTextArea;
     private javax.swing.JLabel imageViewer;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox localeCodeSelector;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton previousButton;
+    private javax.swing.JLabel topic;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void windowOpened(WindowEvent we) {
-        
-        TriangleTopicDialog triangleTopic = new TriangleTopicDialog(this, true);
-        triangleTopic.setVisible(true);
-        pictureCountMin = triangleTopic.getTopicIndexFirst();
-        imageInd = pictureCountMin;
-        pictureCountMax = triangleTopic.getTopicIndexLast();
-        setComponents();        
+        triangleTopic = new TriangleTopicDialog(this, true);
+        setTopic();
     }
 
     @Override
     public void windowClosing(WindowEvent we) {
-        
+
     }
 
     @Override
     public void windowClosed(WindowEvent we) {
-        
+
     }
 
     @Override
     public void windowIconified(WindowEvent we) {
-        
+
     }
 
     @Override
     public void windowDeiconified(WindowEvent we) {
-        
+
     }
 
     @Override
     public void windowActivated(WindowEvent we) {
-        
+
     }
 
     @Override
     public void windowDeactivated(WindowEvent we) {
-        
+
     }
 }

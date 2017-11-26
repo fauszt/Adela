@@ -1,0 +1,4 @@
+﻿α+α’=180°		β+β’=180°		γ+γ’=180°
+A háromszög azonos csúcsánál lévő belső és külső szögének összege 180°.
+
+

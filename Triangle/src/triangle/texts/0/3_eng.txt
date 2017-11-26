@@ -1,0 +1,2 @@
+﻿α '+ β' + γ '= 360⁰
+The sum of the outer angles of any triangle is 360 °.

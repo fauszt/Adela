@@ -1,0 +1,2 @@
+﻿α’+β’+γ’=360⁰
+Bármely háromszög külső szögeinek összege 360⁰.
