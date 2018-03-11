@@ -9,11 +9,18 @@ import java.awt.ComponentOrientation;
 import java.awt.Image;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -29,23 +36,23 @@ public class Application extends javax.swing.JFrame implements WindowListener {
     final private String[][] topicTexts = new String[][]{
         {"Háromszögek tulajdonságai",
             "Háromszögek csoportosítása",
-            "Háromszögek szerkeszthetőségének alapesetei",                        
+            "Háromszögek szerkeszthetőségének alapesetei",
             "Háromszögek nevei"
         },
         {"Properties of triangles",
             "Grouping of triangles",
-            "Basics of editing triangles",                        
+            "Basics of editing triangles",
             "Names of triangles"
         },
         {"خصائص المثلثات",
             "تجميع المثلثات",
-            "أساسيات المثلثات التحرير",            
+            "أساسيات المثلثات التحرير",
             "أسماء المثلثات"
         }
     };
 
-    String[][][] topicText = new String [3][4][21];
-        
+    String[][][] topicText = new String[3][4][21];
+
     private int imageInd;
     private int langCode;
     private int topicInd;
@@ -76,41 +83,187 @@ public class Application extends javax.swing.JFrame implements WindowListener {
 
     private void initTopicText() {
 
-        
-        for (int top = 0; top < noOfTopic; ++top) {            
+        String[] filenames = {
+            "0/0_ar.txt",
+            "0/0_en.txt",
+            "0/0_hu.txt",
+            "0/1_ar.txt",
+            "0/1_en.txt",
+            "0/1_hu.txt",
+            "0/2_ar.txt",
+            "0/2_en.txt",
+            "0/2_hu.txt",
+            "0/3_ar.txt",
+            "0/3_en.txt",
+            "0/3_hu.txt",
+            "0/4_ar.txt",
+            "0/4_en.txt",
+            "0/4_hu.txt",
+            "0/5_ar.txt",
+            "0/5_en.txt",
+            "0/5_hu.txt",
+            "1/0_ar.txt",
+            "1/0_en.txt",
+            "1/0_hu.txt",
+            "1/1_ar.txt",
+            "1/1_en.txt",
+            "1/1_hu.txt",
+            "1/2_ar.txt",
+            "1/2_en.txt",
+            "1/2_hu.txt",
+            "1/3_ar.txt",
+            "1/3_en.txt",
+            "1/3_hu.txt",
+            "1/4_ar.txt",
+            "1/4_en.txt",
+            "1/4_hu.txt",
+            "2/0_ar.txt",
+            "2/0_en.txt",
+            "2/0_hu.txt",
+            "2/1_ar.txt",
+            "2/1_en.txt",
+            "2/1_hu.txt",
+            "2/2_ar.txt",
+            "2/2_en.txt",
+            "2/2_hu.txt",
+            "2/3_ar.txt",
+            "2/3_en.txt",
+            "2/3_hu.txt",
+            "2/4_ar.txt",
+            "2/4_en.txt",
+            "2/4_hu.txt",
+            "2/5_ar.txt",
+            "2/5_en.txt",
+            "2/5_hu.txt",
+            "2/6_ar.txt",
+            "2/6_en.txt",
+            "2/6_hu.txt",
+            "2/7_ar.txt",
+            "2/7_en.txt",
+            "2/7_hu.txt",
+            "2/8_ar.txt",
+            "2/8_en.txt",
+            "2/8_hu.txt",
+            "2/9_ar.txt",
+            "2/9_en.txt",
+            "2/9_hu.txt",
+            "2/10_ar.txt",
+            "2/10_en.txt",
+            "2/10_hu.txt",
+            "2/11_ar.txt",
+            "2/11_en.txt",
+            "2/11_hu.txt",
+            "2/12_ar.txt",
+            "2/12_en.txt",
+            "2/12_hu.txt",
+            "2/13_ar.txt",
+            "2/13_en.txt",
+            "2/13_hu.txt",
+            "2/14_ar.txt",
+            "2/14_en.txt",
+            "2/14_hu.txt",
+            "2/15_ar.txt",
+            "2/15_en.txt",
+            "2/15_hu.txt",
+            "2/16_ar.txt",
+            "2/16_en.txt",
+            "2/16_hu.txt",
+            "2/17_ar.txt",
+            "2/17_en.txt",
+            "2/17_hu.txt",
+            "2/18_ar.txt",
+            "2/18_en.txt",
+            "2/18_hu.txt",
+            "2/19_ar.txt",
+            "2/19_en.txt",
+            "2/19_hu.txt",
+            "3/0_ar.txt",
+            "3/0_en.txt",
+            "3/0_hu.txt",
+            "3/1_ar.txt",
+            "3/1_en.txt",
+            "3/1_hu.txt",
+            "3/2_ar.txt",
+            "3/2_en.txt",
+            "3/2_hu.txt",
+            "3/3_ar.txt",
+            "3/3_en.txt",
+            "3/3_hu.txt",
+            "3/4_ar.txt",
+            "3/4_en.txt",
+            "3/4_hu.txt",
+            "3/5_ar.txt",
+            "3/5_en.txt",
+            "3/5_hu.txt",
+            "3/6_ar.txt",
+            "3/6_en.txt",
+            "3/6_hu.txt",
+            "3/7_ar.txt",
+            "3/7_en.txt",
+            "3/7_hu.txt",
+            "3/8_ar.txt",
+            "3/8_en.txt",
+            "3/8_hu.txt",
+            "3/9_ar.txt",
+            "3/9_en.txt",
+            "3/9_hu.txt",
+            "3/10_ar.txt",
+            "3/10_en.txt",
+            "3/10_hu.txt",
+            "3/11_ar.txt",
+            "3/11_en.txt",
+            "3/11_hu.txt",
+            "3/12_ar.txt",
+            "3/12_en.txt",
+            "3/12_hu.txt",
+            "3/13_ar.txt",
+            "3/13_en.txt",
+            "3/13_hu.txt",
+            "3/14_ar.txt",
+            "3/14_en.txt",
+            "3/14_hu.txt",
+            "3/15_ar.txt",
+            "3/15_en.txt",
+            "3/15_hu.txt",
+            "3/16_ar.txt",
+            "3/16_en.txt",
+            "3/16_hu.txt",};
 
-            File dir = new File(getClass().getResource("/triangle/texts/" + top).getPath());
+        for (String filename : filenames) {            
+            
+            File file = new File(getClass().getResource("/triangle/texts/" + filename).getPath());            
 
-            File[] files = dir.listFiles();
-            for (File file : files) {
-                try {                    
-                    String absolutePath = file.getAbsolutePath();
-                    String lang = absolutePath.substring(absolutePath.length() - 6, absolutePath.length() - 4);
-                    Scanner scan = new Scanner(new File(absolutePath), "UTF-8");
-                    
-                    int textNo = Integer.parseInt(file.getName().split("_")[0]);
+            try {
+                InputStream in = getClass().getResourceAsStream("/triangle/texts/" + filename); 
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in, Charset.forName("UTF-8")));
 
-                    String line = "";
-                    while (scan.hasNextLine()) {
-                        line += scan.nextLine();
-                        line += "\n";
-                    }
-                    switch (lang) {
-                        case "hu":
-                            topicText[0][top][textNo] = line;
-                            break;
-                        case "en":
-                            topicText[1][top][textNo] = line;
-                            break;
-                        case "ar":
-                            topicText[2][top][textNo] = line;
-                            break;
-                    }
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    System.exit(top);
+                int textNo = Integer.parseInt(file.getName().split("_")[0]);
+
+                String line = "";
+                String read = null;
+                while ((read = reader.readLine()) != null) {                    
+                    line += read + "\n";
                 }
+                
+                String absolutePath = file.getAbsolutePath();
+                String lang = absolutePath.substring(absolutePath.length() - 6, absolutePath.length() - 4);
+                
+                int top = Integer.parseInt(filename.substring(0,1));
+                switch (lang) {
+                    case "hu":
+                        topicText[0][top][textNo] = line;
+                        break;
+                    case "en":
+                        topicText[1][top][textNo] = line;
+                        break;
+                    case "ar":
+                        topicText[2][top][textNo] = line;
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
+
         }
     }
 
@@ -122,8 +275,8 @@ public class Application extends javax.swing.JFrame implements WindowListener {
     }
 
     private void setImage() {
-        if (triangleTopic != null) {            
-            imageViewer.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/triangle/pictures/" + topicInd + "/" + imageInd + ".jpg")).getImage().getScaledInstance(770, 414, Image.SCALE_DEFAULT)));            
+        if (triangleTopic != null) {
+            imageViewer.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/triangle/pictures/" + topicInd + "/" + imageInd + ".jpg")).getImage().getScaledInstance(770, 414, Image.SCALE_DEFAULT)));
         }
     }
 
@@ -303,14 +456,14 @@ public class Application extends javax.swing.JFrame implements WindowListener {
     }//GEN-LAST:event_selectTopicActionPerformed
 
     private void setButtons() {
-        previousButton.setEnabled(imageInd > 0);        
-        nextButton.setEnabled(topicText[langCode][topicInd][imageInd +1 ] != null);
+        previousButton.setEnabled(imageInd > 0);
+        nextButton.setEnabled(topicText[langCode][topicInd][imageInd + 1] != null);
     }
 
     private void setTopic() {
-        triangleTopic.setVisible(true);        
-        imageInd = 0;        
-        topicInd = triangleTopic.getTopicIndex();        
+        triangleTopic.setVisible(true);
+        imageInd = 0;
+        topicInd = triangleTopic.getTopicIndex();
         setComponents();
     }
 
