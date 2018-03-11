@@ -44,7 +44,7 @@ public class Application extends javax.swing.JFrame implements WindowListener {
         }
     };
 
-    String[][][] topicText = new String [3][4][20];
+    String[][][] topicText = new String [3][4][21];
         
     private int imageInd;
     private int langCode;
@@ -107,7 +107,8 @@ public class Application extends javax.swing.JFrame implements WindowListener {
                             break;
                     }
                 } catch (Exception e) {
-
+                    System.out.println(e.getMessage());
+                    System.exit(top);
                 }
             }
         }
