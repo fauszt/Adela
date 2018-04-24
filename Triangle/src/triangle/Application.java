@@ -272,6 +272,7 @@ public class Application extends javax.swing.JFrame implements WindowListener {
         if (triangleTopic != null) {
             topic.setText(topicTexts[langCode][topicInd]);
         }
+        explainTextArea.setCaretPosition(0);
     }
 
     private void setImage() {
@@ -430,6 +431,7 @@ public class Application extends javax.swing.JFrame implements WindowListener {
         previousButton.setText(rb.getString("Application.previousButton.text"));
         localeCodeSelector.setToolTipText(rb.getString("Application.localeCodeSelector.toolTipText"));
         selectTopic.setText(rb.getString("Application.selectTopic.text"));
+        selectTopic.setToolTipText(rb.getString("Application.selectTopic.toolTipText"));
         this.setTitle(rb.getString("Application.title"));
         triangleTopic.setLanguage(rb);
 

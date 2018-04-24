@@ -30,7 +30,7 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
     }
 
     public void setLanguage(ResourceBundle rb){
-        cim.setText(rb.getString("TriangleTopicDialog.jLabel1.text"));
+        cim.setText(rb.getString("TriangleTopicDialog.cim.text"));
         propOfTriangle.setText(rb.getString("TriangleTopicDialog.propOfTriangle.text"));
         groupOfTriangle.setText(rb.getString("TriangleTopicDialog.groupOfTriangle.text"));
         editingOfTriangle.setText(rb.getString("TriangleTopicDialog.editingOfTriangle.text"));                
