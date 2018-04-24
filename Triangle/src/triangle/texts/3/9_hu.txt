@@ -1,1 +1,1 @@
-Line segment bisector 
+        A háromszög magasságvonalai egy pontban metszik egymást.

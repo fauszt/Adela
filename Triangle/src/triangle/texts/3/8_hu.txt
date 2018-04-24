@@ -1,1 +1,1 @@
-Line segment bisector 
+        Magasságvonal:  a csúcsból a szemközti oldalegyenesre bocsátott merőleges.

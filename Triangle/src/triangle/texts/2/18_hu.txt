@@ -1,1 +1,5 @@
-két olda és nagyobbikkal szemban lévö szög
+Adott: két oldal és a nagyobbikkal szemben lévő szög
+
+    3.lépés: α szögben meghosszabbítjuk az egyenest, 
+            majd a oldal hosszának megfelelően elmetsszük 
+            ezt a félegyenest körzővel (C pont).

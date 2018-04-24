@@ -1,2 +1,4 @@
-﻿a+b>c              b+c>a               a+c>b
-A szerkesztett háromszög
+Háromszög-egyenlőtlenség
+
+    A szerkesztett háromszög:﻿
+        a + b > c         b + c > a          a + c > b

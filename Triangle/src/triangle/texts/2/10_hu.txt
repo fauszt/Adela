@@ -1,1 +1,3 @@
-egyoldal és két rajtó lévö két szög
+Adott: két oldal és az általuk közbezárt szög
+ 
+5. lépés: Végül B és C pont összekötésével, megrajzoljuk az a oldalt.

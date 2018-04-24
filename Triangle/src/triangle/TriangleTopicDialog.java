@@ -30,11 +30,12 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
     }
 
     public void setLanguage(ResourceBundle rb){
-        editingOfTriangle.setText(rb.getString("TriangleTopicDialog.editingOfTriangle.text"));
-        groupOfTriangle.setText(rb.getString("TriangleTopicDialog.propOfTriangle.text"));
-        jLabel1.setText(rb.getString("TriangleTopicDialog.jLabel1.text"));
-        nameOfTriangle.setText(rb.getString("TriangleTopicDialog.nameOfTriangle.text"));
+        cim.setText(rb.getString("TriangleTopicDialog.jLabel1.text"));
         propOfTriangle.setText(rb.getString("TriangleTopicDialog.propOfTriangle.text"));
+        groupOfTriangle.setText(rb.getString("TriangleTopicDialog.groupOfTriangle.text"));
+        editingOfTriangle.setText(rb.getString("TriangleTopicDialog.editingOfTriangle.text"));                
+        nameOfTriangle.setText(rb.getString("TriangleTopicDialog.nameOfTriangle.text"));
+        
         this.setTitle(rb.getString("TriangleTopicDialog.title"));
     }
     /**
@@ -50,7 +51,7 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
         groupOfTriangle = new javax.swing.JButton();
         propOfTriangle = new javax.swing.JButton();
         nameOfTriangle = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        cim = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("triangle/Bundle"); // NOI18N
@@ -86,11 +87,11 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText(bundle.getString("TriangleTopicDialog.jLabel1.text")); // NOI18N
-        jLabel1.setOpaque(true);
+        cim.setBackground(new java.awt.Color(255, 255, 255));
+        cim.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cim.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cim.setText(bundle.getString("TriangleTopicDialog.cim.text")); // NOI18N
+        cim.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,14 +104,14 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
                     .addComponent(groupOfTriangle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addComponent(nameOfTriangle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addComponent(propOfTriangle, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cim, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(propOfTriangle, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -188,9 +189,9 @@ public class TriangleTopicDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cim;
     private javax.swing.JButton editingOfTriangle;
     private javax.swing.JButton groupOfTriangle;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton nameOfTriangle;
     private javax.swing.JButton propOfTriangle;
     // End of variables declaration//GEN-END:variables

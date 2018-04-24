@@ -1,1 +1,3 @@
-két olda és nagyobbikkal szemban lévö szög
+Adott: egy oldal és a rajta lévő két szög
+                                                                                                                                                                                              
+      4. lépés: B pontnál felvesszük β szöget.

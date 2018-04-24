@@ -1,1 +1,1 @@
-Line segment bisector 
+        Középvonal: a háromszög két oldalfelező pontját összekötő szakasz.

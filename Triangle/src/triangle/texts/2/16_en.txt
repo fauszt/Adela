@@ -1,1 +1,2 @@
-angle to two sides and bigger
+Given: two sides and the angle opposite to the bigger
+       Step 1: Let's take a half-line (A point). The length of the c side is dotted with the bandwidth (B point).

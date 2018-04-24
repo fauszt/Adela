@@ -1,1 +1,3 @@
-three solutions
+Given: three sides
+Step 4: Take the length of b page with a circle, then pull the circle out of A from this point. 
+The intersection of the two arcs will be C point.

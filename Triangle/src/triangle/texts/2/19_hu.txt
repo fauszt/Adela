@@ -1,1 +1,3 @@
-két olda és nagyobbikkal szemban lévö szög
+Adott: két oldal és a nagyobbikkal szemben lévő szög
+
+    4. lépés: B és C pontot összekötve, megkapjuk az a oldalt.

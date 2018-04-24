@@ -1,1 +1,4 @@
-angle to two sides and bigger
+Given: one side and two angles on it
+   
+      Step 5: Extend the stem of β angle. Where the two extended straight lines intersect, the point C will be.
+              The section between points A and C will be b, while the section between B and C is the side.

@@ -1,1 +1,1 @@
-Line segment bisector 
+        Ez a pont a háromszög beírható körének középpontja.

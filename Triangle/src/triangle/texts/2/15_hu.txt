@@ -1,1 +1,4 @@
-két olda és nagyobbikkal szemban lévö szög
+Adott: egy oldal és a rajta lévő két szög
+
+5. lépés: β szög szárát meghosszabbítjuk. Ahol a két meghosszabbított egyenes metszi egymást, lesz a C pont.
+    Az A és C pont közti szakasz lesz a b oldal, míg a B és C pont közti szakasz az a oldal.

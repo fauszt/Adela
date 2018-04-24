@@ -1,1 +1,1 @@
-Line segment bisector 
+Centerline: a section joining the two sides of the triangle.

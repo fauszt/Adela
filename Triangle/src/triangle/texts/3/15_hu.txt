@@ -1,1 +1,1 @@
-Line segment bisector 
+        A háromszög súlyvonalai egy pontban metszik egymást.

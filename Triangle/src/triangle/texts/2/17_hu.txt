@@ -1,1 +1,3 @@
-két olda és nagyobbikkal szemban lévö szög
+Adott: két oldal és a nagyobbikkal szemben lévő szög
+
+    2.lépés: A pontnál felvesszük α szöget.

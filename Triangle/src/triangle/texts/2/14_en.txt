@@ -1,1 +1,3 @@
-angle to two sides and bigger
+Given: one side and two angles on it
+
+   Step 4: Take B at β.

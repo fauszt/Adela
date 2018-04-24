@@ -1,1 +1,3 @@
-két oldal és a közbezárt szög
+Adott: három oldal
+	6. lépés: Illetve A és C pont összekötésével, megrajzoljuk a b oldalt. 
+

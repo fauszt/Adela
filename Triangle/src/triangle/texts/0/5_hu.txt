@@ -1,2 +1,4 @@
-α+ β =r’       α+r = β’                 β+r=α
-A háromszög külső szöge azonos a nem mellette fekvö két belső szög  összegével 
+Külső szög - belső szögek
+
+    A háromszög külső szöge azonos a nem mellette fekvö két belső szög összegével. 
+            α + β = r’       α + r = β’           β + r = α'

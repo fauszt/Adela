@@ -1,1 +1,2 @@
-one side and two starters are two angles
+Given: one side and two angles on it
+    Step 2: Match the length of the c-side with the bandwidth (point B).

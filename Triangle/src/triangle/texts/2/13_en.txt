@@ -1,1 +1,3 @@
-angle to two sides and bigger
+Given: one side and two angles on it
+   
+Step 3: Take the angle α at the point and extend the straight line according to this angle.

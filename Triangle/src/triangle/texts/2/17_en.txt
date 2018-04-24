@@ -1,1 +1,3 @@
-angle to two sides and bigger
+Given: two sides and the angle opposite to the bigger
+      
+       Step 2: Take the angle α at the point.

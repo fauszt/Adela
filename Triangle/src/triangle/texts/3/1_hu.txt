@@ -1,1 +1,1 @@
-﻿oldalfelezö
+    A háromszög oldalfelező merőlegesei metszik egymást.

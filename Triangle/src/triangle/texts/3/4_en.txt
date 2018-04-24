@@ -1,1 +1,3 @@
-Line segment bisector 
+
+
+        Angle bisector

@@ -1,1 +1,5 @@
-angle to two sides and bigger
+Given: two sides and the angle opposite to the bigger
+
+      Step 3: Extend the straight line at α,
+              then we think about the length of the side
+              this is the semicircle with a circle (point C).

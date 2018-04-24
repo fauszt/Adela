@@ -1,1 +1,2 @@
-három olda
+Adott: három oldal
+	5. lépés: Végül B és C pont összekötésével, megrajzoljuk az a oldalt.

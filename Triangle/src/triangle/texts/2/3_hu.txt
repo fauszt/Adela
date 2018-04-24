@@ -1,1 +1,2 @@
-három olda
+Adott: három oldal
+4. lépés: b oldal hosszát is felvesszük körzővel, majd ezzel a körzőnyílással körívet húzunk A pontból. A két körív metszéspontja lesz a C pont.

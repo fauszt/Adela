@@ -1,1 +1,3 @@
-three solutions
+Given: three sides
+
+Step 5: Finally, by connecting points B and C, sketch the page.

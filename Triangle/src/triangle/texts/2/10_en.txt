@@ -1,1 +1,3 @@
-one side and two starters are two angles
+given :two sides and the intermediate angle
+
+   Step 5: Finally, by connecting points B and C, sketch the sides.

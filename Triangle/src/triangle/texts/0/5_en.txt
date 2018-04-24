@@ -1,6 +1,6 @@
+Outer angle - inner angles
 
-α+ β =r’       α+r = β’                 β+r=α
+      The outer angle of the triangle is the same 
+        as the sum of the two inner angles beside it.
 
-
-The outer angle of the triangle is the same as the sum of the two inner angles beside it
-
+        α + β = r’       α + r = β’                 β + r = α'

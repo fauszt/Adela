@@ -1,1 +1,4 @@
-egyoldal és két rajtó lévö két szög
+Adott: két oldal és az általuk közbezárt szög 
+4. lépés: Körzővel felvesszük b oldal hosszát, majd ezzel a körzőnyílással
+ A pontból körívet húzunk. Ezután az α szögnek megfelelően meghosszabbítjuk az egyenest.
+ Ahol a körív metszi ezt az egyenest, lesz a C pont. Az A és C pont közti szakasz lesz a b oldal.

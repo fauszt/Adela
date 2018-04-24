@@ -1,1 +1,1 @@
-Line segment bisector 
+Weightline: the section joining the vertex with the midpoint of the opposite side.

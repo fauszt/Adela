@@ -1,1 +1,2 @@
-két oldal és a közbezárt szög
+Adott: két oldal és az általuk közbezárt szög 
+2. lépés: A c oldal hosszának megfelelően elmetsszük a félegyenest körzővel (B pont).

@@ -1,1 +1,6 @@
-two sides and the intermediate angle
+Given: three sides
+Step 6: Including points A and C, sketch sides b.
+
+
+
+

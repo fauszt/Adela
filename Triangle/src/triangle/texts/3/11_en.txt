@@ -1,1 +1,1 @@
-Line segment bisector 
+Height point: intersection of height lines

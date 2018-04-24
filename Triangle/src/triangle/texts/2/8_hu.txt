@@ -1,1 +1,2 @@
-két oldal és a közbezárt szög
+Adott: két oldal és az általuk közbezárt szög 
+3. lépés: A pontnál felvesszük α szöget.

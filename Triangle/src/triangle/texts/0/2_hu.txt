@@ -1,2 +1,4 @@
-﻿α+ β+ γ=180°
-Bármely háromszög belső szöginek összege 180°
+Belső szögek
+   
+     Bármely háromszög belső szögeinek összege 180°
+﻿         α + β + γ = 180°

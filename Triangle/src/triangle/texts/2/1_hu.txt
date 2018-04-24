@@ -1,1 +1,2 @@
-három olda
+Adott: három oldal
+	2. lépés: A c oldal hosszának megfelelően elmetsszük a félegyenest körzővel (B pont).

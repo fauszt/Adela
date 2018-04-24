@@ -1,1 +1,1 @@
-Line segment bisector 
+This point is the center of the circle that can be entered in the triangle.

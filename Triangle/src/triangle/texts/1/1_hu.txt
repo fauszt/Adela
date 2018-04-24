@@ -1,2 +1,2 @@
-﻿derékszögű háromszög
+        Derékszögű háromszög
 

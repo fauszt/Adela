@@ -1,1 +1,1 @@
-Line segment bisector 
+Side slope perpendicular

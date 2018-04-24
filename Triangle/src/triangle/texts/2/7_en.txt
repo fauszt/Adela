@@ -1,1 +1,3 @@
-two sides and the intermediate angle
+given :two sides and the intermediate angle
+
+   Step 2: Match the length of the c-side with the bandwidth (point B).

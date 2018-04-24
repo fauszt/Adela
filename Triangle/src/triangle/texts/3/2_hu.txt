@@ -1,1 +1,1 @@
-Line segment bisector 
+    A háromszög oldalfelező merőlegesei egy pontban metszik egymást.

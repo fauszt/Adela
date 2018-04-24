@@ -1,1 +1,4 @@
-triangular inequality
+Triangle inequality
+
+     The condition of editing a triangle is:
+         The amount of two sides is always bigger than the third side.

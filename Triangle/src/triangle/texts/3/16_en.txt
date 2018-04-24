@@ -1,1 +1,2 @@
-Line segment bisector 
+Center of gravity:
+the intersection of the weight lines.

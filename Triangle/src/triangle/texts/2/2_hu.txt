@@ -1,1 +1,2 @@
-három olda
+Adott: három oldal
+3. lépés: Körzővel felvesszük az a oldal hosszát, majd ennek megfelelően B  pontból körívet húzunk.

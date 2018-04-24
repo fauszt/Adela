@@ -1,2 +1,2 @@
-﻿szabályos háromszög
+        Szabályos háromszög
 

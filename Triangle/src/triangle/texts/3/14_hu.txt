@@ -1,1 +1,1 @@
-Line segment bisector 
+        Súlyvonal: a csúcsot a szemközti oldal felezőpontjával összekötő szakasz.

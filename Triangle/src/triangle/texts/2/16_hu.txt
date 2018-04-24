@@ -1,1 +1,3 @@
-két olda és nagyobbikkal szemban lévö szög
+Adott: két oldal és a nagyobbikkal szemben lévő szög
+
+    1. lépés: Felveszünk egy félegyenest (A pont). A c oldal hosszának megfelelően elmetsszük a félegyenest körzővel (B pont).

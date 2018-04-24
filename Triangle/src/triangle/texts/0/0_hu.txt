@@ -1,1 +1,4 @@
-﻿haromszög egyenlőtlenség
+﻿Háromszög-egyenlőtlenség﻿
+
+    A háromszög szerkeszthetőségének feltétele:
+        Két oldal összege mindig nagyobb, mint a harmadik oldal.

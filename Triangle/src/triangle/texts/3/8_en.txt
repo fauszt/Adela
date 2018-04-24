@@ -1,1 +1,1 @@
-Line segment bisector 
+Heightline: Vertical from the vertex to the opposite side margin.
